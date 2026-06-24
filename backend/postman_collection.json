@@ -1,0 +1,100 @@
+{
+  "info": {
+    "_postman_id": "7f87a80b-93ff-4b13-91b3-a0e28f09b552",
+    "name": "Chitkara Full Stack Challenge Collection",
+    "description": "Postman Collection for Chitkara Challenge /bfhl API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Process Graph hierarchies (POST /bfhl)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": [\n    \"A->B\",\n    \"A->C\",\n    \"B->D\",\n    \"C->E\",\n    \"E->F\",\n    \"X->Y\",\n    \"Y->Z\",\n    \"Z->X\",\n    \"P->Q\",\n    \"Q->R\",\n    \"G->H\",\n    \"G->H\",\n    \"G->I\",\n    \"hello\",\n    \"1->2\",\n    \"A->\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/bfhl",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "bfhl"
+          ]
+        },
+        "description": "Primary endpoint which parses, validates, resolves duplicate/multi-parent cases, and processes graph components."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Operation Code (GET /bfhl)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/bfhl",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "bfhl"
+          ]
+        },
+        "description": "Standard endpoint to fetch operation status or verify server response is online."
+      },
+      "response": []
+    },
+    {
+      "name": "API Health status (GET /health)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Endpoint for checking health status of the running backend server."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

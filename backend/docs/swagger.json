@@ -1,0 +1,220 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Chitkara Full Stack Engineering Challenge API",
+    "description": "API description for Chitkara REST API POST /bfhl, which accepts an array of node relations, parses them, handles duplicates, handles diamond cases, detects cycles, and calculates tree depth."
+  },
+  "host": "localhost:5000",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "BFHL Operations",
+      "description": "Endpoints to process hierarchies and check status"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/bfhl": {
+      "post": {
+        "tags": [
+          "BFHL Operations"
+        ],
+        "summary": "Process node hierarchical relationships",
+        "description": "Accepts an array of parent-child edge strings and processes them into structured tree hierarchies and cycles.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Data array consisting of edge string representations",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BfhlRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hierarchical structures processed successfully",
+            "schema": {
+              "$ref": "#/definitions/BfhlResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid input formatting or request structure",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server execution error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "BFHL Operations"
+        ],
+        "summary": "Get system operation status code",
+        "description": "Returns status information and operation code.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful status lookup",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "operation_code": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Chitkara Full Stack Challenge API is active. Use POST /bfhl to process hierarchical data."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BfhlRequest": {
+      "type": "object",
+      "required": [
+        "data"
+      ],
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "A->B"
+          },
+          "example": [
+            "A->B",
+            "A->C",
+            "B->D",
+            "X->Y",
+            "Y->Z",
+            "Z->X",
+            "hello"
+          ]
+        }
+      }
+    },
+    "BfhlResponse": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "example": "garvpuri_24062006"
+        },
+        "email_id": {
+          "type": "string",
+          "example": "garv.puri@college.edu"
+        },
+        "college_roll_number": {
+          "type": "string",
+          "example": "21CS1001"
+        },
+        "hierarchies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HierarchyObject"
+          }
+        },
+        "invalid_entries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "hello"
+          ]
+        },
+        "duplicate_edges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": []
+        },
+        "summary": {
+          "type": "object",
+          "properties": {
+            "total_trees": {
+              "type": "integer",
+              "example": 1
+            },
+            "total_cycles": {
+              "type": "integer",
+              "example": 1
+            },
+            "largest_tree_root": {
+              "type": "string",
+              "example": "A"
+            }
+          }
+        }
+      }
+    },
+    "HierarchyObject": {
+      "type": "object",
+      "properties": {
+        "root": {
+          "type": "string",
+          "example": "A"
+        },
+        "tree": {
+          "type": "object",
+          "description": "Nested tree representation or empty object if cyclic",
+          "example": {
+            "A": {
+              "B": {
+                "D": {}
+              },
+              "C": {}
+            }
+          }
+        },
+        "depth": {
+          "type": "integer",
+          "example": 3
+        },
+        "has_cycle": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "is_success": {
+          "type": "boolean",
+          "example": false
+        },
+        "message": {
+          "type": "string",
+          "example": "Invalid request body."
+        }
+      }
+    }
+  }
+}

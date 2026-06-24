@@ -1,0 +1,37 @@
+{
+  "name": "chitkara-bfhl-backend",
+  "version": "1.0.0",
+  "description": "Backend for Chitkara Full Stack Engineering Challenge",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --detectOpenHandles"
+  },
+  "keywords": [
+    "express",
+    "graph",
+    "tree",
+    "validation",
+    "bfhl"
+  ],
+  "author": "Garv Puri",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
