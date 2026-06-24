@@ -29,7 +29,7 @@ Render is ideal for deploying the Node.js + Express backend.
    - `EMAIL_ID`: `garv.puri@college.edu` *(or update to your credentials)*
    - `COLLEGE_ROLL_NUMBER`: `21CS1001` *(or update to your credentials)*
 5. Click **Create Web Service**.
-6. Once deployed, Render will provide a public URL (e.g., `https://chitkara-bfhl-backend.onrender.com`).
+6. Once deployed, Render will provide a public URL (e.g., `https://chitkara-challenge.onrender.com`).
    - *Note: Free instances spin down on inactivity and can take ~50 seconds to warm up on the first request.*
 
 ---
@@ -57,5 +57,5 @@ Vercel is optimized for static and React applications built with Vite.
 ## 3. Connecting the Frontend to the Backend
 
 1. Open your deployed Vercel frontend URL.
-2. In the **Target Endpoint** field inside the "System Input" card, input your deployed Render API URL (e.g., `https://chitkara-bfhl-backend.onrender.com`).
+2. In the **Target Endpoint** field inside the "System Input" card, input your deployed Render API URL (e.g., `https://chitkara-challenge.onrender.com`).
 3. Click **Execute Analysis** to run queries against your production backend.

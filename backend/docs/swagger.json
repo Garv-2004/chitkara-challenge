@@ -5,7 +5,7 @@
     "title": "Chitkara Full Stack Engineering Challenge API",
     "description": "API description for Chitkara REST API POST /bfhl, which accepts an array of node relations, parses them, handles duplicates, handles diamond cases, detects cycles, and calculates tree depth."
   },
-  "host": "localhost:5000",
+  "host": "chitkara-challenge.onrender.com",
   "basePath": "",
   "tags": [
     {
@@ -14,7 +14,6 @@
     }
   ],
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
